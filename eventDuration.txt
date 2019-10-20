@@ -1,0 +1,3 @@
+{ "id":"scsmbstgra", "timestamp_start":1023843500, "timestamp_end":1023843505, "duration": 5, "alert:" true, "type":"APPLICATION_LOG", "host":"12345"}
+{ "id":"scsmbstgrb", "timestamp_start":1023843501, "timestamp_end":1023843504, "duration": 3, "alert:" false, "type":"n/a", "host":"n/a"}
+{ "id":"scsmbstgrc", "timestamp_start":1023843498, "timestamp_end":1023843506, "duration": 8, "alert:" true, "type":"n/a", "host":"n/a"}
