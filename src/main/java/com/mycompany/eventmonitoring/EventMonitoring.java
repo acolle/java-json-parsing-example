@@ -111,7 +111,6 @@ public class EventMonitoring {
         // Iterate through the collection and output the results in a text file
         Iterator it = eventMap.entrySet().iterator();
         String wd = EventMonitoring.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-        System.out.println(wd);
         FileWriter writer = new FileWriter(wd + "/com/mycompany/eventmonitoring/eventDurationResults.txt");
         BufferedWriter buffer = new BufferedWriter(writer);  
         while (it.hasNext()) {
