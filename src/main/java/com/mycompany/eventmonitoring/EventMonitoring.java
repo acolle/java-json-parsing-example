@@ -6,18 +6,8 @@
 package com.mycompany.eventmonitoring;
 
 
-//
 import java.util.*;
-
-//
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
-//
+import java.io.*;
 import org.json.*;
 
 /**
@@ -29,7 +19,8 @@ public class EventMonitoring {
     public static void main(String[] args) throws FileNotFoundException, IOException {
      
         // Parse the content of logfile.txt and store it as a string
-        BufferedReader reader = new BufferedReader(new FileReader("logfile.txt"));
+        InputStream in = EventMonitoring.class.getResourceAsStream("logfile.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         String json = "";
         try {
             StringBuilder sb = new StringBuilder();
@@ -54,7 +45,6 @@ public class EventMonitoring {
         JSONArray eventArray = object.getJSONArray("events");
         
         // Create a map collection to store values associated with each ids
-        //Map eventMap = new HashMap();
         HashMap<String, Event> eventMap = new HashMap<String, Event>();
         
         for (int i = 0; i < eventArray.length(); i++) {
@@ -120,7 +110,9 @@ public class EventMonitoring {
         
         // Iterate through the collection and output the results in a text file
         Iterator it = eventMap.entrySet().iterator();
-        FileWriter writer = new FileWriter("./eventDuration.txt");
+        String wd = EventMonitoring.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        System.out.println(wd);
+        FileWriter writer = new FileWriter(wd + "/com/mycompany/eventmonitoring/eventDurationResults.txt");
         BufferedWriter buffer = new BufferedWriter(writer);  
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
